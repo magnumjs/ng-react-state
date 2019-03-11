@@ -1,7 +1,7 @@
 # ng-react-state
 
 [![npm (scoped)](https://img.shields.io/npm/v/@magnumjs/ng-react-state.svg)](https://github.com/magnumjs/ng-react-state)
-[![npm bundle size (minified)](https://img.shields.io/bundlephobia/min/@magnumjs/ng-react-state.svg)](https://github.com/magnumjs/ng-react-state)
+[![npm bundle size (minified)](https://img.shields.io/github/size/magnumjs/ng-react-state/dist/ng-react-state.min.js.svg)](https://github.com/magnumjs/ng-react-state)
 
 Shared React State Hooks in Angular 1
 
@@ -23,7 +23,7 @@ With [ngReact]() you can set React components into Angular1.
 But what about sharing state across all React Components?
 With [top-state-hook]() and [ngReactState]() we can now access and change the same state that will auto re-render.
 
-##React shared State Component Angular1 Factory
+## React shared State Component Angular1 Factory
 
 
 ```html
@@ -56,7 +56,7 @@ angular.module('app', ['react', 'react-state'])
 ```
 
 
-##React shared State Component Angular1 Directive
+## React shared State Component Angular1 Directive
 
 
 ```html

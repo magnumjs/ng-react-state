@@ -1,23 +1,41 @@
 <!DOCTYPE html>
 <html>
-  <head>
-    <meta charset="utf-8" />
-    <meta http-equiv="X-UA-Compatible" content="IE=edge" />
+<head>
+    <meta charset="utf-8"/>
+    <meta http-equiv="X-UA-Compatible" content="IE=edge"/>
     <title>ngReactState - Angular 1 React Hooks State</title>
-    <meta name="viewport" content="width=device-width, initial-scale=1" />
-    <!--<script src="//cdnjs.cloudflare.com/ajax/libs/ngreact/0.5.2/ngReact.min.js"></script>-->
-  </head>
+    <meta name="viewport" content="width=device-width, initial-scale=1"/>
+    <style>
+        [ng\:cloak], [ng-cloak], [data-ng-cloak], [x-ng-cloak], .ng-cloak, .x-ng-cloak {
+            display: none !important;
+        }
+    </style>
+</head>
 
-  <body ng-app="app">
-    <div ng-controller="helloController">
-      {{subscribers.user.token}}
-      <div id="user-provider"></div>
-      <div id="app"></div>
-      <!--<react-state name="user" props="user" updater="updater"></react-state>-->
+<body ng-app="app">
 
-      <!--<react-component name="App"></react-component>-->
-      <!--<react-component name="App2"></react-component>-->
+    <p><a href="//github.com/magnumjs/ng-react-state">ngReactState</a> example with straight React inside of Angular</p>
+    <p><a href="ng-react.html">example using reactState Factory</a> to render React components that can be re-rendered with $scope</p>
+    <hr/>
+
+
+    <div ng-controller="helloController3" ng-cloak>
+        <div>User's Token: {{user.token}}</div>
+
+        <!-- optional directive vs the factory function: $scope.updater = reactState('user', $scope.user) -->
+        <react-state name="user" props="user"></react-state>
+
+        <react-component name="WelcomePage"></react-component>
+        <react-component name="UserPage"></react-component>
+
     </div>
-  <script type="text/javascript" src="/ng-react-state.min.js"></script></body>
 
+    <div ng-controller="helloController1" ng-cloak>
+        <div>User's Token: {{user.token}}</div>
+
+        <div id="welcomePage"></div>
+        <div id="userPage"></div>
+    </div>
+
+<script type="text/javascript" src="/ng-react-state.min.js"></script></body>
 </html>

@@ -3,8 +3,6 @@ import useTopState from '../lib/top-state-hook';
 import Welcome from "./Welcome";
 
 export default props => {
-    useTopState("user" , {});
-
-    console.log("app render");
+    console.log("app render", props);
     return <Welcome />;
 };

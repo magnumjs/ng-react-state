@@ -1,65 +1,23 @@
-import * as React from 'react';
-import * as ReactDOM from 'react-dom';
-import useSharedState from './lib/top-state-hook';
 import angular from 'angular';
-
-const createReactProvider = (ProviderName, InitialVals, Element) => {
-
-    const Component = props => {
-
-        const [state, setState] = useSharedState(ProviderName, InitialVals)
-
-        React.useEffect(() => {
-
-            props.updater(user => {
-                setState(angular.copy(user))
-            });
-        }, [])
-
-        return null
-    }
-
-    let callback;
-    const providerProps = {
-        updater: cb => {
-            callback = cb;
-        }
-    };
-
-    ReactDOM.render(React.createElement(Component, providerProps), Element);
-
-    return (data) => {
-        callback(data)
-    }
-}
+import useSharedState from './lib/top-state-hook';
+import reactComponent from './lib/reactComponent'
+import createReactProvider from './lib/createReactProvider'
+import reactState from './lib/reactState'
 
 
-const reactComponent = function() {
-    return {
-        restrict: 'E',
-        replace: true,
-        link: function(scope, elem, attrs) {
+/**
+ * @name ng-react-state
+ * @license MIT
+ * @author Michael Glazer <https://github.com/magnumjs>
+ * @link https://github.com/magnumjs/ng-react-state
+ * @description Shared React State Provider in Angular 1
+ */
 
-            scope[attrs.updater] = createReactProvider(attrs.name, scope[attrs.props], elem[0])
-
-            // cleanup when scope is destroyed
-            scope.$on('$destroy', function() {
-                if (!attrs.onScopeDestroy) {
-                    ReactDOM.unmountComponentAtNode(elem[0]);
-                } else {
-                    scope.$eval(attrs.onScopeDestroy, {
-                        unmountComponent: ReactDOM.unmountComponentAtNode.bind(this, elem[0])
-                    });
-                }
-            });
-        }
-    }
-}
-
-export {reactComponent, createReactProvider, useSharedState}
+export {reactState, createReactProvider, reactComponent, useSharedState}
 
 const ngReactState = angular.module("react-state", [])
-    .directive('reactState', reactComponent)
+    .directive('reactComponent', ['$injector', reactComponent])
+    .directive('reactState', reactState)
     .factory('reactState', () => createReactProvider)
 
 export default ngReactState;

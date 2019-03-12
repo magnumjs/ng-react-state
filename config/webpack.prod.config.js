@@ -14,6 +14,9 @@ module.exports = merge(baseConfig, {
     usedExports: true,
       minimizer: [
           new TerserPlugin({
+              extractComments: {
+                  condition: /^\**!|@preserve|@license|@cc_on/i,
+              },
               sourceMap: true, // Must be set to true if using source-maps in production
               terserOptions: {
                   output: {

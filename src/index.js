@@ -2,28 +2,78 @@ import './main'
 import angular from 'angular'
 import * as React from 'react';
 import { render } from "react-dom";
-import useTopState from './lib/top-state-hook';
-import App from './react-comps/App'
+import WelcomePage from './react-comps/App'
+import UserPage from './react-comps/UserPage'
+
+
+const welcomePageEL = document.getElementById("welcomePage");
+const userPageEL = document.getElementById("userPage");
+
+const user = {
+    name: "Mike",
+    guid: 123455,
+    token: Math.random()
+}
 
 angular.module('app', ['react-state'])
-.controller('helloController', function($scope, reactState) {
 
-    render(<App />, document.getElementById("app"));
+.value("WelcomePage", WelcomePage)
+.value("UserPage", UserPage)
+
+.controller('helloController2', function($scope, reactState) {
+    $scope.user =  user
+
+    const update = reactState("user", $scope.user)
+
+    setInterval(() => {
+        $scope.user.token = Math.random()
+        // Notify scope
+        update($scope.user)
+        $scope.$apply()
+    }, 3000)
+
+})
 
 
-    $scope.user = {
-        name: "Joe",
-        guid: 123455,
-        token: Math.random()
-    }
+.controller('helloController4', function($scope, reactState) {
+    $scope.user =  user
 
-    $scope.updater = reactState('user', $scope.user, document.getElementById('user-provider'))
+    reactState("user", $scope.user)
+    render(<UserPage/>, userPageEL)
 
-    setInterval(function() {
+    setInterval(() => {
+        $scope.user.token = Math.random()
+        // Notify scope
+        $scope.$apply()
+    }, 3000)
 
+})
+.controller('helloController3', function($scope, reactState) {
+
+    $scope.user =  user
+
+    setInterval(() => {
+        $scope.user.token = Math.random()
+        // Notify scope
+        $scope.$apply()
+    }, 3000)
+
+})
+.controller('helloController1', function($scope, reactState) {
+
+    $scope.user =  user
+
+    const updater = reactState('user', $scope.user)
+
+    render(<WelcomePage/>, welcomePageEL)
+    render(<UserPage />, userPageEL)
+
+    setInterval(() => {
         $scope.user.token = Math.random()
         // Notify subscribers.
-        $scope.updater($scope.user)
+        updater($scope.user)
+        // Notify scope
+        $scope.$apply()
     }, 3000)
 
 })

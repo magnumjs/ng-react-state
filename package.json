@@ -1,6 +1,6 @@
 {
   "name": "@magnumjs/ng-react-state",
-  "version": "1.1.0",
+  "version": "1.1.1",
   "description": "Shared React Hooks State Provider in Angular 1",
   "license": "MIT",
   "main": "src/main.js",

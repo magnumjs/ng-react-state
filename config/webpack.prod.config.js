@@ -35,8 +35,8 @@ module.exports = merge(baseConfig, {
     chunkFilename: '[name].[id].chunk.js',
     path: path.join(__dirname, '../dist'),
     publicPath: '/',
-  libraryTarget: 'umd',
-  umdNamedDefine: true
+  // libraryTarget: 'umd',
+  // umdNamedDefine: true
   },
   externals: {
     angular: 'angular', // Case matters here

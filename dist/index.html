@@ -20,12 +20,17 @@
 
 
     <div ng-controller="helloController3" ng-cloak>
-        <div>User's Token: {{user.token}}</div>
+        <div>User's Token: {{user.token}} {{user.name}}</div>
 
         <!-- optional directive vs the factory function: $scope.updater = reactState('user', $scope.user) -->
-        <react-state name="user" props="user"></react-state>
+        <react-state name="user"></react-state>
 
-        <react-component name="WelcomePage"></react-component>
+
+        {{loading?"Loading ...": ""}}
+        <button ng-click="test.fun()">Changer</button>
+        <button ng-click="updateToken()">Update Token</button>
+
+        <react-component name="WelcomePage" props="test"></react-component>
         <react-component name="UserPage"></react-component>
 
     </div>

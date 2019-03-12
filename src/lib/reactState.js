@@ -10,13 +10,14 @@ const reactState = function() {
         replace: true,
         link: function(scope, elem, attrs) {
 
+            const vname = attrs.props?attrs.props:scope[attrs.name]?attrs.name:{}
 
-            const updater = createReactProvider(attrs.name, scope[attrs.props], elem[0])
+            const updater = createReactProvider(attrs.name, scope[vname], elem[0])
 
             if(scope[attrs.updater] ){
                 scope[attrs.updater] = updater
             } else {
-                scope.$watch(attrs.props, function(newVal, oldVal){
+                scope.$watch(vname, function(newVal, oldVal){
                     if(newVal !== oldVal){
                         updater(newVal)
                     }

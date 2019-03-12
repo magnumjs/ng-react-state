@@ -52,18 +52,25 @@ angular.module('app', ['react-state'])
 
     $scope.user =  user
 
-    setInterval(() => {
-        $scope.user.token = Math.random()
-        // Notify scope
-        $scope.$apply()
-    }, 3000)
+    $scope.test={fun: ()=>$scope.user.name="DUDE!"}
+
+
+    $scope.updateToken = () => {
+        $scope.loading=true
+        setTimeout(() => {
+            $scope.user.token = Math.random()
+            $scope.loading=false
+            // Notify scope
+            $scope.$apply()
+        }, 3000)
+    }
 
 })
 .controller('helloController1', function($scope, reactState) {
 
     $scope.user =  user
 
-    const updater = reactState('user', $scope.user)
+    const updater = reactState('user')
 
     render(<WelcomePage/>, welcomePageEL)
     render(<UserPage />, userPageEL)

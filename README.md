@@ -3,7 +3,11 @@
 [![npm (scoped)](https://img.shields.io/npm/v/@magnumjs/ng-react-state.svg)](https://www.npmjs.com/package/@magnumjs/ng-react-state)
 [![npm bundle size (minified)](https://img.shields.io/github/size/magnumjs/ng-react-state/dist/ng-react-state.min.js.svg)](https://unpkg.com/@magnumjs/ng-react-state)
 
-Shared React State Hooks in Angular 1
+<i>Shared React State Hooks in Angular 1</i>
+
+  [Angular 1](https://code.angularjs.org/1.6.7/docs/guide/introduction) Directives and factory with [React Hooks](https://reactjs.org/docs/hooks-intro.html) 
+    to share and auto re-render state across [React Components](https://reactjs.org/docs/react-component.html)
+    without props passing or parent hierarchies
 
 
 ## Install
@@ -32,13 +36,13 @@ we can now access and change the same state that will auto re-render those compo
 
 # Examples
 
-[JSBIN - directives](unpkg.com/@magnumjs/ng-react-state)
+[Try it on JSBin](https://jsbin.com/malubuwuya/edit?html,js,output)
 
-## React shared State Component Angular1 Factory
+## React shared State Component Angular1 Directive
 
 ```jsx harmony
 const WelcomePage= props => {
-    const [user, setUser] = useTopState("user");
+    const [user, setUser] = ngReactState.useSharedState("user");
 
     const { name, guid, token } = user;
 
@@ -52,6 +56,36 @@ const WelcomePage= props => {
     );
 };
 ```
+
+```html
+<div ng-controller="helloController">
+    <react-state name="user"></react-state>
+    <react-component name="WelcomePage"></react-component>
+</div>
+```
+
+```js
+angular.module('app', ['react-state'])
+.controller('helloController', function($scope) {
+
+  $scope.user = {
+    name: "Mike",
+    guid: 123455,
+    token: Math.random()
+  }
+
+  setInterval(function() {
+    $scope.user.token = Math.random()
+      // Notify subscribers.
+    $scope.$apply()
+  }, 3000)
+
+})
+//=> "!"
+```
+
+
+## React shared State Component Angular1 Factory
 
 ```html
 <div ng-controller="helloController">
@@ -73,7 +107,6 @@ angular.module('app', ['react-state'])
   render(<WelcomePage />, document.getElementById("welcomePage"));
 
   setInterval(function() {
-
     $scope.user.token = Math.random()
       // Notify subscribers.
     $scope.$apply()
@@ -83,37 +116,6 @@ angular.module('app', ['react-state'])
 //=> "!"
 ```
 
-
-## React shared State Component Angular1 Directive
-
-
-```html
-<div ng-controller="helloController">
-    <react-state name="user" props="user"></react-state>
-    <react-component name="WelcomePage"></react-component>
-</div>
-```
-
-```js
-angular.module('app', ['react-state'])
-.controller('helloController', function($scope) {
-
-  $scope.user = {
-    name: "Mike",
-    guid: 123455,
-    token: Math.random()
-  }
-
-  setInterval(function() {
-
-    $scope.user.token = Math.random()
-      // Notify subscribers.
-    $scope.$apply()
-  }, 3000)
-
-})
-//=> "!"
-```
 
 # Api
 
@@ -127,8 +129,9 @@ It also exposes 4 objects to the global or window `ngReactState`
 
 ```export {reactState, createReactProvider, reactComponent, useSharedState}```
 
-1. reactState - directive
-2. reactComponent - directive
-3. createReactProvider - factory alias "reactState"
-4. useSharedState - React Hook
+1. reactState - directive - `<react-state name="ScopeNameObject" [Optional Scope name Object: props=""] [Optional Scope name update Function: updater=""]></react-state>`
+2. reactComponent - directive - `<react-component name="ComponentName" props="Optional scope Object"></react-component>`
+3. createReactProvider - factory alias "reactState" - `returns Updater Function = reactState(Name: String, [Optional InitialValue: Props: Object], [Optional Node: Element])`
+    a. `Name` is the name of the `useSharedState` provider in React set by `ngReactState.useSharedState()`
+4. useSharedState - React Hook - React Hook to set and get shared state `const [getValue, setValue] = ngReactState.useSharedState(Name: String, [Optional InitialValue: Props: Object])`
 

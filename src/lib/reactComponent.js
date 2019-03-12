@@ -27,22 +27,7 @@ const getReactComponent = (name, $injector) => {
     return reactComponent
 }
 
-function applyFunctions(obj, scope, propsConfig) {
-    return Object.keys(obj || {}).reduce(function (prev, key) {
-        const value = obj[key];
-        const config = (propsConfig || {})[key] || {};
-        /**
-         * wrap functions in a function that ensures they are scope.$applied
-         * ensures that when function is called from a React component
-         * the Angular digest cycle is run
-         */
-        prev[key] = angular.isFunction(value) && config.wrapApply !== false
-            ? applied(value, scope)
-            : value;
 
-        return prev;
-    }, {});
-}
 
 const reactComponent = function ($injector) {
     return {
@@ -50,16 +35,10 @@ const reactComponent = function ($injector) {
         replace: true,
         link: function (scope, elem, attrs) {
 
-            const ComponentName = attrs.name
-            const props = scope[attrs.props]
-            const Element = elem[0]
-
             const reactComponent = getReactComponent(attrs.name, $injector);
 
-            console.log("COM", reactComponent, elem[0])
             const renderMyComponent = function () {
-                let scopeProps = scope.$eval(attrs.props);
-                const props = applyFunctions(scopeProps, scope);
+                const props = scope.$eval(attrs.props);
 
                 ReactDOM.render(React.createElement(reactComponent, props), elem[0]);
             }

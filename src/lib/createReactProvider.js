@@ -3,7 +3,7 @@ import * as ReactDOM from 'react-dom';
 import useSharedState from './top-state-hook';
 import angular from 'angular';
 
-const createReactProvider = (ProviderName, InitialVals, Element) => {
+const createReactProvider = (ProviderName, InitialVals={}, Element) => {
 
     const vElement = {nodeType:1, tagName: 'b', childNodes: [], style: {}}
 

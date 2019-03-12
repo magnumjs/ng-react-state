@@ -25,6 +25,15 @@ With [top-state-hook](https://github.com/mvolkmann/top-state-hook)
 and [ngReactState](https://github.com/magnumjs/ng-react-state) 
 we can now access and change the same state that will auto re-render those components without passing props.
 
+## Browser install
+```html
+  <script src="//unpkg.com/@magnumjs/ng-react-state"></script>
+```
+
+# Examples
+
+[JSBIN - directives](unpkg.com/@magnumjs/ng-react-state)
+
 ## React shared State Component Angular1 Factory
 
 ```jsx harmony
@@ -105,3 +114,21 @@ angular.module('app', ['react-state'])
 })
 //=> "!"
 ```
+
+# Api
+
+The angular module attaches itself to angular as "react-state" and can be injected as such:
+
+```js
+angular.module("app", ["react-state"])
+```
+
+It also exposes 4 objects to the global or window `ngReactState`
+
+```export {reactState, createReactProvider, reactComponent, useSharedState}```
+
+1. reactState - directive
+2. reactComponent - directive
+3. createReactProvider - factory alias "reactState"
+4. useSharedState - React Hook
+

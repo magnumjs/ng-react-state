@@ -18,12 +18,14 @@ export default function useTopState(name, initialValue) {
 
     if (!state) {
         const setValue = value => {
-            if (isObject(value)){
-                state.value = {...state.value, ...value};
-            } else {
-                state.value = value;
+            if(value!==state.value) {
+                if (isObject(value)) {
+                    state.value = {...state.value, ...value};
+                } else {
+                    state.value = value;
+                }
+                state.updaters.forEach(fn => fn(value));
             }
-            state.updaters.forEach(fn => fn(value));
         };
 
         state = { name, setValue, updaters: new Set(), value: initialValue };

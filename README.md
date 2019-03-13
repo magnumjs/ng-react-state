@@ -1,7 +1,7 @@
 # ng-react-state
 
-[![npm (scoped)](https://img.shields.io/npm/v/@magnumjs/ng-react-state.svg)](https://www.npmjs.com/package/@magnumjs/ng-react-state)
-[![npm bundle size (minified)](https://img.shields.io/github/size/magnumjs/ng-react-state/dist/ng-react-state.min.js.svg)](https://unpkg.com/@magnumjs/ng-react-state)
+[![npm (scoped)](https://img.shields.io/npm/v/ng-react-state.svg)](https://www.npmjs.com/package/ng-react-state)
+[![npm bundle size (minified)](https://img.shields.io/github/size/magnumjs/ng-react-state/dist/ng-react-state.min.js.svg)](https://unpkg.com/ng-react-state)
 
 <i>Shared React State Hooks in Angular 1</i>
 
@@ -13,7 +13,7 @@
 ## Install
 
 ```
-$ npm install @magnumjs/ng-react-state
+$ npm install ng-react-state
 ```
 
 ## Usage
@@ -31,7 +31,7 @@ we can now access and change the same state that will auto re-render those compo
 
 ## Browser install
 ```html
-  <script src="//unpkg.com/@magnumjs/ng-react-state"></script>
+  <script src="//unpkg.com/ng-react-state"></script>
 ```
 
 # Examples

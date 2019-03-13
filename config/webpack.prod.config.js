@@ -1,33 +1,21 @@
+const webpack = require('webpack');
 const path = require('path');
 const merge = require('webpack-merge');
 const CleanWebpackPlugin = require('clean-webpack-plugin');
-const TerserPlugin = require("terser-webpack-plugin");
 const baseConfig = require('./webpack.base.config');
 
 const CleanPluginConfig = new CleanWebpackPlugin();
 
+var banner = process.env.npm_package_name + ' - ' + process.env.npm_package_version + ' | ' +
+    '(c)' + new Date().getFullYear() + '  ' + process.env.npm_package_author_name + ' | ' +
+    process.env.npm_package_license + ' | ' +
+    process.env.npm_package_homepage;
 
 module.exports = merge(baseConfig, {
   entry: './src/main.js',
   mode: 'production',
   optimization: {
     usedExports: true,
-      minimizer: [
-          new TerserPlugin({
-              extractComments: {
-                  condition: /^\**!|@preserve|@license|@cc_on/i,
-              },
-              sourceMap: true, // Must be set to true if using source-maps in production
-              terserOptions: {
-                  output: {
-                      comments: false,
-                  },
-                  compress: {
-                      drop_console: true
-                  }
-              }
-          })
-      ]
   },
   output: {
     library: 'ngReactState',
@@ -49,5 +37,5 @@ module.exports = merge(baseConfig, {
     maxAssetSize: 300000
   },
     devtool: false,
-    plugins: [CleanPluginConfig]
+    plugins: [CleanPluginConfig,new webpack.BannerPlugin(banner)]
 });

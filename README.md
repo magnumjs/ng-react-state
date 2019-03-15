@@ -25,7 +25,7 @@ $ npm run start
 
 With [ngReact](https://github.com/ngReact/ngReact) you can set React components into Angular1.
 But what about sharing state across all React Components?
-With [top-state-hook](https://github.com/mvolkmann/top-state-hook) 
+With [shared-state-hook](https://github.com/magnumjs/shared-state-hook) 
 and [ngReactState](https://github.com/magnumjs/ng-react-state) 
 we can now access and change the same state that will auto re-render those components without passing props.
 
@@ -33,6 +33,8 @@ we can now access and change the same state that will auto re-render those compo
 ```html
 <script src="//unpkg.com/ng-react-state"></script>
 ```
+
+[https://unpkg.com/ng-react-state](https://unpkg.com/ng-react-state)
 
 # Examples
 
@@ -127,11 +129,19 @@ angular.module("app", ["react-state"])
 
 It also exposes 4 objects to the global or window `ngReactState`
 
-```export {reactState, createReactProvider, reactComponent, useSharedState}```
+```export {reactState, createReactProvider, reactComponent}```
 
-1. reactState - directive - `<react-state name="ScopeNameObject" [Optional Scope name Object: props=""] [Optional Scope name update Function: updater=""]></react-state>`
-2. reactComponent - directive - `<react-component name="ComponentName" props="Optional scope Object"></react-component>`
-3. createReactProvider - factory alias "reactState" - `returns Updater Function = reactState(Name: String, [Optional InitialValue: Props: Object], [Optional Node: Element])`
-    a. `Name` is the name of the `useSharedState` provider in React set by `ngReactState.useSharedState()`
-4. useSharedState - React Hook - React Hook to set and get shared state `const [getValue, setValue] = ngReactState.useSharedState(Name: String, [Optional InitialValue: Props: Object])`
+1. reactState - directive
+
+```<react-state name="ScopeNameObject" [Optional Scope name Object: props=""] [Optional Scope name update Function: updater=""]></react-state>```
+
+2. reactComponent - directive
+
+```<react-component name="ComponentName" props="Optional scope Object"></react-component>```
+
+3. createReactProvider - factory alias "reactState"
+
+```returns Updater Function = reactState(Name: String, [Optional InitialValue: Props: Object], [Optional Node: Element])```
+
+`Name` is the name of the `useSharedState` provider
 

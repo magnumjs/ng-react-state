@@ -31,7 +31,7 @@ we can now access and change the same state that will auto re-render those compo
 
 ## Browser install
 ```html
-  <script src="//unpkg.com/ng-react-state"></script>
+<script src="//unpkg.com/ng-react-state"></script>
 ```
 
 # Examples
@@ -42,7 +42,7 @@ we can now access and change the same state that will auto re-render those compo
 
 ```jsx harmony
 const WelcomePage= props => {
-    const [user, setUser] = ngReactState.useSharedState("user");
+    const [user, setUser] = useSharedState("user");
 
     const { name, guid, token } = user;
 

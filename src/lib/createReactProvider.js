@@ -1,6 +1,6 @@
 import * as React from 'react';
 import * as ReactDOM from 'react-dom';
-import useSharedState from './top-state-hook';
+import {useSharedState} from 'shared-state-hook';
 import angular from 'angular';
 
 const createReactProvider = (ProviderName, InitialVals={}, Element) => {
@@ -9,7 +9,7 @@ const createReactProvider = (ProviderName, InitialVals={}, Element) => {
 
     const Component = props => {
 
-        const [state, setState] = useSharedState(ProviderName, InitialVals)
+        const [, setState] = useSharedState(ProviderName, InitialVals)
 
         React.useEffect(() => {
 

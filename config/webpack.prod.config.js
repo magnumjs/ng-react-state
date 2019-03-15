@@ -27,6 +27,7 @@ module.exports = merge(baseConfig, {
   // umdNamedDefine: true
   },
   externals: {
+    // 'shared-state-hook': 'useSharedState', // Case matters here
     angular: 'angular', // Case matters here
     react: 'React', // Case matters here
     'react-dom': 'ReactDOM' // Case matters here

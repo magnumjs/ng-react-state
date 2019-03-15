@@ -1,9 +1,9 @@
 import * as React from 'react';
-import useTopState from '../lib/top-state-hook';
+import {useSharedState} from 'shared-state-hook';
 import User from "./User";
 
 export default props => {
-    const [userInfo] =useTopState("user");
+    const [userInfo] =useSharedState("user");
 
 
     console.log("userpage render");

@@ -1,5 +1,5 @@
 import angular from 'angular';
-import useSharedState from './lib/top-state-hook';
+import {useSharedState} from 'shared-state-hook';
 import reactComponent from './lib/reactComponent'
 import createReactProvider from './lib/createReactProvider'
 import reactState from './lib/reactState'

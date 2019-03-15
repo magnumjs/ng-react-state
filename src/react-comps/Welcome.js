@@ -1,8 +1,8 @@
 import * as React from 'react';
-import useTopState from '../lib/top-state-hook';
+import {useSharedState} from 'shared-state-hook';
 
 export default props => {
-    const [user, setUser] = useTopState("user");
+    const [user, setUser] = useSharedState("user");
 
     const { name, guid, token } = user;
 

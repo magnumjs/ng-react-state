@@ -38,7 +38,7 @@ we can now access and change the same state that will auto re-render those compo
 
 # Examples
 
-[Try it on JSBin](https://jsbin.com/tehakaxalo/edit?html,js,output)
+[Try it on JSBin](https://jsbin.com/naqategini/edit?html,js,output)
 
 ## React shared State Component Angular1 Directive
 

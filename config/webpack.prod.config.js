@@ -28,6 +28,7 @@ module.exports = merge(baseConfig, {
   },
   externals: {
     'shared-state-hook/lib/shared-state-hook': 'useSharedState', // Case matters here
+    'shared-state-hook/lib/outside-function-hook': 'useHooksOutside', // Case matters here
     angular: 'angular', // Case matters here
     react: 'React', // Case matters here
     'react-dom': 'ReactDOM' // Case matters here

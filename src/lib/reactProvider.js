@@ -1,4 +1,3 @@
-import * as React from 'react';
 import useSharedState from 'shared-state-hook/lib/shared-state-hook';
 import useHooksOutside from 'shared-state-hook/lib/outside-function-hook';
 

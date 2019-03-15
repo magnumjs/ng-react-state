@@ -1,6 +1,6 @@
 import * as React from 'react';
 import * as ReactDOM from 'react-dom';
-import {useSharedState} from 'shared-state-hook';
+import useSharedState from 'shared-state-hook/lib/shared-state-hook';
 import angular from 'angular';
 
 const createReactProvider = (ProviderName, InitialVals={}, Element) => {

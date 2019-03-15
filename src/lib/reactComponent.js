@@ -46,6 +46,17 @@ const reactComponent = function ($injector) {
             scope.$watch(attrs.props, renderMyComponent, true);
 
             renderMyComponent()
+
+            // cleanup when scope is destroyed
+            scope.$on('$destroy', function() {
+                if (!attrs.onScopeDestroy) {
+                    ReactDOM.unmountComponentAtNode(elem[0]);
+                } else {
+                    scope.$eval(attrs.onScopeDestroy, {
+                        unmountComponent: ReactDOM.unmountComponentAtNode.bind(this, elem[0])
+                    });
+                }
+            });
         }
 
     }

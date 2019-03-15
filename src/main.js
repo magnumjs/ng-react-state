@@ -1,6 +1,6 @@
 import angular from 'angular';
 import reactComponent from './lib/reactComponent'
-import createReactProvider from './lib/createReactProvider'
+import createReactProvider from './lib/reactProvider'
 import reactState from './lib/reactState'
 
 export {reactState, createReactProvider, reactComponent}

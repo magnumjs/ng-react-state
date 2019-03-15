@@ -141,7 +141,7 @@ It also exposes 4 objects to the global or window `ngReactState`
 
 3. createReactProvider - factory alias "reactState"
 
-```returns Updater Function = reactState(Name: String, [Optional InitialValue: Props: Object], [Optional Node: Element])```
+```returns Updater Function = reactState(Name: String, [Optional InitialValue: Props: Object], [Optional onUpdate: Function])```
 
 `Name` is the name of the `useSharedState` provider
 

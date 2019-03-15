@@ -4,6 +4,7 @@ import * as React from 'react';
 import { render } from "react-dom";
 import WelcomePage from './react-comps/App'
 import UserPage from './react-comps/UserPage'
+import './angular-modules/timer'
 
 
 const welcomePageEL = document.getElementById("welcomePage");
@@ -14,6 +15,8 @@ const user = {
     guid: 123455,
     token: Math.random()
 }
+
+
 
 angular.module('app', ['react-state'])
 

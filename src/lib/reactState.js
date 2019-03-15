@@ -1,6 +1,6 @@
 import * as React from 'react';
 import * as ReactDOM from 'react-dom';
-import createReactProvider from './createReactProvider'
+import createReactProvider from './reactProvider'
 
 
 const reactState = function() {
@@ -12,7 +12,16 @@ const reactState = function() {
 
             const vname = attrs.props?attrs.props:scope[attrs.name]?attrs.name:{}
 
-            const updater = createReactProvider(attrs.name, scope[vname], elem[0])
+            const onUpdate = updates => {
+                scope[vname] = {
+                    ...scope[vname], ...updates
+                }
+                if(!scope.$$phase) {
+                    scope.$apply()
+                }
+            }
+
+            const updater = createReactProvider(attrs.name, scope[vname], onUpdate)
 
             if(scope[attrs.updater] ){
                 scope[attrs.updater] = updater

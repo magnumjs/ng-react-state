@@ -127,7 +127,7 @@ The angular module attaches itself to angular as "react-state" and can be inject
 angular.module("app", ["react-state"])
 ```
 
-It also exposes 4 objects to the global or window `ngReactState`
+It also exposes 3 objects to the global or window `ngReactState`
 
 ```export {reactState, createReactProvider, reactComponent}```
 

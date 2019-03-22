@@ -149,4 +149,4 @@ It also exposes 3 objects to the global or window `ngReactState`
 
 ## ngRedux
 
-[setInterval](https://jsbin.com/toridazoyi/edit?html,js,output)
+[setInterval](https://jsbin.com/rehisuwezi/edit?html,js,output)

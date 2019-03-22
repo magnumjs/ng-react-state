@@ -1,7 +1,7 @@
 # ng-react-state
 
 [![npm (scoped)](https://img.shields.io/npm/v/ng-react-state.svg)](https://www.npmjs.com/package/ng-react-state)
-[![npm bundle size (minified)](https://img.shields.io/github/size/magnumjs/ng-react-state/dist/ng-react-state.min.js.svg)](https://unpkg.com/ng-react-state)
+[![npm bundle size (minified)](https://img.shields.io/bundlephobia/minzip/ng-react-state.svg)](https://unpkg.com/ng-react-state)
 
 <i>Shared React State Hooks in Angular 1</i>
 
@@ -145,3 +145,8 @@ It also exposes 3 objects to the global or window `ngReactState`
 
 `Name` is the name of the `useSharedState` provider
 
+# Advanced Example
+
+## ngRedux
+
+[setInterval](https://jsbin.com/toridazoyi/edit?html,js,output)
